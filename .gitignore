@@ -1,0 +1,6 @@
+*__pycache__*
+*Images*
+
+.venv/
+
+# *.npy
