@@ -30,7 +30,7 @@ def get_scan_paths(base_dir, group_code):
     
     return scan_paths
 
-def show_pair(img_pair, color_range):
+def show_pair(img_pair, color_range, title=None):
     ''' Show a pair of two images.
     '''
     img1 = img_pair[0]
@@ -46,3 +46,6 @@ def show_pair(img_pair, color_range):
     divider = make_axes_locatable(axes[1])
     cax = divider.append_axes('right', size='5%', pad=0.05)
     fig.colorbar(im2, cax=cax, orientation='vertical')
+
+    if title:
+        fig.suptitle(title)
