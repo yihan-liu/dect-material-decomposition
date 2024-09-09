@@ -3,17 +3,21 @@ import os
 import argparse
 
 import numpy as np
+import matplotlib.pyplot as plt
 from skimage.restoration import denoise_bilateral
 from skimage.morphology import disk
 from skimage.morphology import binary_dilation, binary_erosion
 from skimage.morphology import remove_small_objects
 
 from hu_utils import load_hu, write_decom
+from utils import show_pair
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-n', '--num_scan', type=int,
-                        default=200, help='Number of scan slices to load.')
+                        default=250, help='Number of scan slices to load.')
+    parser.add_argument('-i', '--index', type=int,
+                        default=200, help='Index of scan show.')
     parser.add_argument('-t', '--trim', nargs=4, type=int,
                         default=None, help='Range of the scan of interest, used for removing unwanted part of the scan.')
     parser.add_argument('--batch_name', type=str,
@@ -22,6 +26,7 @@ def main():
 
     args = parser.parse_args()
     num_scan = args.num_scan
+    index = args.index
     trim = args.trim
     batch_name = args.batch_name
 
@@ -82,6 +87,11 @@ def main():
     write_decom(brown_mask_maps, 'output\\BROWN_MASK.DCM', series_name='brown_mask')
     write_decom(white_mask_maps, 'output\\WHITE_MASK.DCM', series_name='white_mask')
     write_decom(difference_maps, 'output\\DIFF_MAP.DCM', series_name='diff_map')
+
+    # show the corresponding image
+    show_pair((low_post_maps[index], high_post_maps[index]), (-200, 0))
+    show_pair((brown_mask_maps[index], white_mask_maps[index]), (0, 1))
+    plt.show()
 
 if __name__ == '__main__':
     main()
