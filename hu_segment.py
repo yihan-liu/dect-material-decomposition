@@ -104,7 +104,14 @@ def main():
     # show the corresponding image
     show_pair((low_post_maps[index], high_post_maps[index]), (-200, 0), title='Post scans')
     show_pair((brown_mask_maps[index], white_mask_maps[index]), (0, 1), title='Masks')
-    plt.show()
+    
+    plt.show(block=False)  # Non-blocking mode
+
+    # Wait until all figures are closed
+    while plt.get_fignums():
+        plt.pause(60)
+
+    plt.close('all')
 
 if __name__ == '__main__':
     main()
