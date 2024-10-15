@@ -1,5 +1,5 @@
 import numpy as np
-import simpleITK as sitk
+import SimpleITK as sitk
 
 def register_bspline(fixed, moving):
     fixed_img = sitk.GetImageFromArray(fixed.astype(np.float32))
