@@ -7,6 +7,7 @@ def main():
     style = ttk.Style('cosmo')
     root = style.master
     root.title('HU Processor')
+    root.geometry('1200x800')
     controller = HUController(root)
     root.mainloop()
     

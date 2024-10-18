@@ -22,7 +22,7 @@ class HUApp(ttk.Frame):
         # Row 0: start scan index
         self.start_scan_label = ttk.Label(self, text='Start Scan Index:')
         self.start_scan_entry = ttk.Entry(self)
-        self.start_scan_entry.insert(0, '1')
+        self.start_scan_entry.insert(0, '50')
         
         self.start_scan_label.grid(row=0, column=0, sticky=W, padx=5, pady=5)
         self.start_scan_entry.grid(row=0, column=1, sticky=W, padx=5, pady=5)
@@ -30,7 +30,7 @@ class HUApp(ttk.Frame):
         # Row 1: end scan index
         self.end_scan_label = ttk.Label(self, text='End Scan Index:')
         self.end_scan_entry = ttk.Entry(self)
-        self.end_scan_entry.insert(0, '250')
+        self.end_scan_entry.insert(0, '500')
         
         self.end_scan_label.grid(row=1, column=0, sticky=W, padx=5, pady=5)
         self.end_scan_entry.grid(row=1, column=1, sticky=W, padx=5, pady=5)
@@ -38,7 +38,7 @@ class HUApp(ttk.Frame):
         # Row 2: Index of Scan to Show
         self.index_label = ttk.Label(self, text='Index of Scan to Show:')
         self.index_entry = ttk.Entry(self)
-        self.index_entry.insert(0, "200")
+        self.index_entry.insert(0, '200')
 
         self.index_label.grid(row=2, column=0, sticky=W, padx=5, pady=5)
         self.index_entry.grid(row=2, column=1, sticky=W, padx=5, pady=5)
@@ -49,7 +49,7 @@ class HUApp(ttk.Frame):
         for i in range(4):
             entry = ttk.Entry(self, width=5)
             self.trim_entries.append(entry)
-            entry.grid(row=3, column=1 + i, sticky=W, padx=2, pady=5)
+            entry.grid(row=3, column=1 + i, sticky=EW, padx=2, pady=5)
         self.trim_label.grid(row=3, column=0, sticky=W, padx=5, pady=5)
         
         # Row 4: Low Post directory
