@@ -18,7 +18,7 @@ def trim_img(img, trim):
         return img
 
 def load_hu(path, trim):
-    dcm = dicom.dcmread(path)
+    dcm = dicom.dcmread(path, force=True)
     pixel = dcm.pixel_array
     hu = apply_modality_lut(pixel, dcm)
     hu = trim_img(hu, trim)
